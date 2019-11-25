@@ -35,7 +35,7 @@ $myobject = New-Object psobject -Property @{
         VM = $snap.VM
         SNAPSHOT = $snap.Name
         CREATED = $snap.Created.DateTime
-        SNAPOWNER = "This event is not in vCente4revents Database"
+        SNAPOWNER = "This event is not in vCenter events Database"
     }
 
   $report += $myobject
