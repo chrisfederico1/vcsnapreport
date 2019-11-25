@@ -1,5 +1,5 @@
  
- 
+ # This script creates a snapshot report. Uses the Get-VIEvent cmdlet. Creates objects ans then exports the object to a CSV file.
  
  Begin {
      #Create an empty array for report
@@ -51,6 +51,6 @@ $myobject = New-Object psobject -Property @{
 
 
  End{
-$report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER
+$report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER 
 
  }
