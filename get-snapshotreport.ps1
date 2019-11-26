@@ -13,7 +13,7 @@
  foreach ($snap in Get-VM | Get-Snapshot)
  {$snapevent = Get-VIEvent -Entity $snap.VM -Types Info -Finish $snap.Created -MaxSamples 1 | Where-Object {$_.FullFormattedMessage -imatch 'Task: Create virtual machine snapshot'}
  
- if ($snapevent -ne $null){
+ if ($null -ne $snapevent){
 
     $myobject = New-Object psobject -Property @{
 
