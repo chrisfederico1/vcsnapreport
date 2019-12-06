@@ -21,7 +21,7 @@
         SNAPSHOT = $snap.Name
         CREATED = $snap.Created.DateTime
         SNAPOWNER = $snapevent.UserName
-        SIZE = $snap.SIZE
+        SIZEGB = "{0:F2}" -f $snap.SizeGB
     }
 
 $report += $myobject
@@ -37,7 +37,7 @@ $myobject = New-Object psobject -Property @{
         SNAPSHOT = $snap.Name
         CREATED = $snap.Created.DateTime
         SNAPOWNER = "This event is not in vCenter events Database"
-        SIZE = $snap.SIZE
+        SIZEGB = "{0:F2}" -f $snap.SIZEGB
     }
 
   $report += $myobject
@@ -53,6 +53,6 @@ $myobject = New-Object psobject -Property @{
 
 
  End{
-$report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER,SIZE
+$report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER,SIZEGB
 
  }
