@@ -9,12 +9,12 @@
  
 
  Process{
-
+# Create Snaps array 
  foreach ($snap in Get-VM | Get-Snapshot)
  {$snapevent = Get-VIEvent -Entity $snap.VM -Types Info -Finish $snap.Created -MaxSamples 1 | Where-Object {$_.FullFormattedMessage -imatch 'Task: Create virtual machine snapshot'}
  
  if ($null -ne $snapevent){
-
+# Create object for custom reporting
     $myobject = New-Object psobject -Property @{
 
         VM = $snap.VM
@@ -32,7 +32,7 @@ $report += $myobject
  else {
 
 $myobject = New-Object psobject -Property @{
-
+# Create object for custom reporting
         VM = $snap.VM
         SNAPSHOT = $snap.Name
         CREATED = $snap.Created.DateTime
@@ -53,6 +53,7 @@ $myobject = New-Object psobject -Property @{
 
 
  End{
+# Create Report
 $report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER,SIZEGB | format-table -AutoSize
 
  }
