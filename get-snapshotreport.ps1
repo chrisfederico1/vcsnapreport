@@ -53,6 +53,6 @@ $myobject = New-Object psobject -Property @{
 
 
  End{
-$report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER,SIZEGB
+$report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER,SIZEGB | format-table -AutoSize
 
  }
