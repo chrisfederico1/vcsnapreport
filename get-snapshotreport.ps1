@@ -54,6 +54,6 @@ $myobject = New-Object psobject -Property @{
 
  End{
 # Create Report
-$report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER,SIZEGB | format-table -AutoSize
+$report | sort-object Created | select-object VM,SNAPSHOT,CREATED,SNAPOWNER,SIZEGB | export-csv .\vcsnapreport.csv
 
  }
